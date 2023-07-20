@@ -9,6 +9,9 @@ export type ButtonProps = {
 
 export const Button = ({ variant = 'primary', fullWidth, className, ...rest }: ButtonProps) => {
   return (
-    <button className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`} {...rest} />
+    <button
+      className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className ?? ''}`}
+      {...rest}
+    />
   )
 }
