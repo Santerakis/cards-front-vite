@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef } from 'react'
 import s from './button.module.scss'
 
 export type ButtonProps = {
+  as: any
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
   fullWidth?: boolean
 } & ComponentPropsWithoutRef<'button'>
