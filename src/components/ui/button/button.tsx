@@ -16,7 +16,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   return (
-    <button
+    <Component
       className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className ?? ''}`}
       {...rest}
     />
