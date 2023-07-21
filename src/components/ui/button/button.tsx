@@ -8,7 +8,13 @@ export type ButtonProps = {
   fullWidth?: boolean
 } & ComponentPropsWithoutRef<'button'>
 
-export const Button = ({ variant = 'primary', fullWidth, className, ...rest }: ButtonProps) => {
+export const Button = ({
+  variant = 'primary',
+  fullWidth,
+  className,
+  as: Component = 'button',
+  ...rest
+}: ButtonProps) => {
   return (
     <button
       className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className ?? ''}`}
