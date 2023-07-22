@@ -82,3 +82,5 @@ export const Button = <T extends ElementType = 'button'>(
     <Component className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`} {...rest} />
   )
 }
+
+// https://itnext.io/react-polymorphic-components-with-typescript-f7ce72ea7af2
