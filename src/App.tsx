@@ -1,7 +1,7 @@
 export function App() {
   return (
     <div>
-      <button>Go home</button>
+      <button>Go home </button>
     </div>
   )
 }
