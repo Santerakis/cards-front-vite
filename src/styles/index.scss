@@ -1,5 +1,6 @@
 // порядок строк важен как в css. 'boilerplate' использует 'typography' поэтому последний
 
+// как export (передача).Порядок важен! Сначало независимые потом что использут предыдущие переменные.
 @forward 'colors';
 @forward 'typography';
 @forward 'boilerplate';
