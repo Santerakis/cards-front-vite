@@ -2,7 +2,7 @@ import { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from '
 
 import { clsx } from 'clsx'
 
-import { VisibilityOff, Eye } from '../../../assets/icons'
+import { Eye } from '../../../assets/icons'
 import { Typography } from '../typography'
 
 import s from './text-field.module.scss'

@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+//обязательно через * as, так в документации
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 import { clsx } from 'clsx'
