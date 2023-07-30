@@ -1,7 +1,9 @@
+import { LoginForm } from './components/auth'
+
 export function App() {
   return (
     <div>
-      <button>Go home </button>
+      <LoginForm />
     </div>
   )
 }
