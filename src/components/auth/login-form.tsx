@@ -1,6 +1,6 @@
-import { useController, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import { Button, TextField } from '@/components/ui'
+import { Button } from '@/components/ui'
 import { ControlledTextField } from '@/components/ui/controlled'
 
 type FormValues = {
@@ -10,7 +10,7 @@ type FormValues = {
 }
 
 export const LoginForm = () => {
-  const { control, handleSubmit, register } = useForm<FormValues>()
+  const { control, handleSubmit } = useForm<FormValues>()
 
   const onSubmit = (data: FormValues) => {
     console.log(data)
