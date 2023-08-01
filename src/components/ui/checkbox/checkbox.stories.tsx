@@ -6,8 +6,7 @@ export default {
   title: 'Components/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-}
-//} satisfies Meta<typeof Checkbox>
+} satisfies Meta<typeof Checkbox>
 
 export const Uncontrolled = {
   args: {

@@ -1,4 +1,6 @@
 import { SVGProps, Ref, forwardRef, memo } from 'react'
+
+// import { VisibilityOff } from '@/assets/icons/index.ts'
 const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -17,4 +19,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export default memo(ForwardRef)
+export const VisibilityOff = memo(ForwardRef)

@@ -1,5 +1,3 @@
-// noinspection BadExpressionStatementJS
-
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Logout } from '../../../assets/icons'
@@ -16,8 +14,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-}
-// }satisfies Meta<typeof Button>
+} satisfies Meta<typeof Button>
 
 export default meta
 type Story = StoryObj<typeof meta>

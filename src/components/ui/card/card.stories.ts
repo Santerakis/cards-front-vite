@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Card',
   component: Card,
   tags: ['autodocs'],
-}
+} satisfies Meta<typeof Card>
 //} satisfies Meta<typeof Card>
 
 export default meta

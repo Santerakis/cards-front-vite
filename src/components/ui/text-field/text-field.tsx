@@ -1,11 +1,13 @@
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import { ChangeEvent, ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { clsx } from 'clsx'
 
-import { Eye } from '../../../assets/icons'
 import { Typography } from '../typography'
 
 import s from './text-field.module.scss'
+
+import { Eye, VisibilityOff } from '@/assets/icons'
+// import { Eye, VisibilityOff } from './../../../assets/icons'
 
 export type TextFieldProps = {
   onValueChange?: (value: string) => void
@@ -37,7 +39,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     const finalType = getFinalType(type, showPassword)
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e)
       onValueChange?.(e.target.value)
     }
@@ -61,7 +63,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <input
             className={classNames.field}
             placeholder={placeholder}
-            ref={ref}
+            // ref={ref}
             type={finalType}
             onChange={handleChange}
             {...restProps}

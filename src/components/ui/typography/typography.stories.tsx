@@ -26,8 +26,7 @@ const meta = {
       control: { type: 'radio' },
     },
   },
-}
-//} satisfies Meta<typeof Typography>
+} satisfies Meta<typeof Typography>
 
 export default meta
 type Story = StoryObj<typeof meta>
