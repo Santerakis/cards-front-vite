@@ -1,11 +1,9 @@
-import { Button, Card, Typography } from '../../ui'
+import { Button, Card, Typography, ControlledCheckbox, ControlledTextField } from '../../ui'
 
-import s from './login-form.module.scss'
+import s from './sign-in.module.scss'
 import { useLoginForm } from './use-login-form.ts'
 
-import { ControlledCheckbox, ControlledTextField } from '@/components/ui/controlled'
-
-export const LoginForm = ({ onSubmit }: any) => {
+export const SignIn = ({ onSubmit }: any) => {
   const { handleSubmit, control } = useLoginForm(onSubmit)
 
   return (
