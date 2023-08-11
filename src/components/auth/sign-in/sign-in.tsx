@@ -1,55 +1,88 @@
-import { Button, Card, Typography, ControlledCheckbox, ControlledTextField } from '../../ui'
+import { DevTool } from '@hookform/devtools'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { z } from 'zod'
+
+import { Button, Card, ControlledCheckbox, ControlledTextField, Typography } from '../../ui'
 
 import s from './sign-in.module.scss'
-import { useLoginForm } from './use-login-form.ts'
 
-export const SignIn = ({ onSubmit }: any) => {
-  const { handleSubmit, control } = useLoginForm(onSubmit)
+const schema = z.object({
+  email: z.string().email('Invalid email address').nonempty('Enter email'),
+  password: z.string().nonempty('Enter password'),
+  rememberMe: z.boolean().optional(),
+})
+
+type FormType = z.infer<typeof schema>
+
+type Props = {
+  onSubmit: (data: FormType) => void
+}
+
+export const SignIn = (props: Props) => {
+  const { control, handleSubmit } = useForm<FormType>({
+    mode: 'onSubmit',
+    resolver: zodResolver(schema),
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
+  })
+
+  const handleFormSubmitted = handleSubmit(props.onSubmit)
 
   return (
-    <Card className={s.card}>
-      <Typography variant="large" as={'h1'}>
-        Sign in
-      </Typography>
-
-      <form onSubmit={handleSubmit}>
-        <ControlledTextField
-          label="email"
-          name="email"
-          control={control}
-          containerProps={{ className: s.textField }}
-        />
-        <ControlledTextField
-          type="password"
-          label="password"
-          name="password"
-          control={control}
-          containerProps={{ className: s.textField }}
-        />
-        <ControlledCheckbox
-          label="Remember me"
-          name="rememberMe"
-          control={control}
-          className={s.checkbox}
-          position="left"
-        />
-
-        <Typography variant="body2" as="a" className={s.forgotPassword}>
-          Forgot password?
+    <>
+      <DevTool control={control} />
+      <Card className={s.card}>
+        <Typography variant="large" className={s.title}>
+          Sign In
         </Typography>
-
-        <Button type={'submit'} fullWidth>
-          Submit
-        </Button>
-      </form>
-      <Typography variant="body2" className={s.noAccount}>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Don't have an account?
-      </Typography>
-
-      <Typography as={'a'} href={'/sing-up'} className={s.signUpLink}>
-        Sign Up
-      </Typography>
-    </Card>
+        <form onSubmit={handleFormSubmitted}>
+          <div className={s.form}>
+            <ControlledTextField
+              placeholder={'Email'}
+              label={'Email'}
+              name={'email'}
+              control={control}
+            />
+            <ControlledTextField
+              placeholder={'Password'}
+              label={'Password'}
+              type={'password'}
+              name={'password'}
+              control={control}
+            />
+          </div>
+          <ControlledCheckbox
+            className={s.checkbox}
+            label={'Remember me'}
+            control={control}
+            name={'rememberMe'}
+            position={'left'}
+          />
+          <Typography
+            variant="body2"
+            as={Link}
+            to="/recover-password"
+            className={s.recoverPasswordLink}
+          >
+            Forgot Password?
+          </Typography>
+          <Button className={s.button} fullWidth type={'submit'}>
+            Sign In
+          </Button>
+        </form>
+        <Typography className={s.caption} variant="body2">
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          Don't have an account?
+        </Typography>
+        <Typography variant="link1" as={Link} to="/sign-up" className={s.signUpLink}>
+          Sign Up
+        </Typography>
+      </Card>
+    </>
   )
 }
