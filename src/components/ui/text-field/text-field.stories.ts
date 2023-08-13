@@ -6,8 +6,7 @@ const meta = {
   title: 'Components/TextField',
   component: TextField,
   tags: ['autodocs'],
-}
-//} satisfies Meta<typeof TextField>
+} satisfies Meta<typeof TextField>
 
 export default meta
 type Story = StoryObj<typeof meta>

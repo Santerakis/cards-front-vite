@@ -4,10 +4,8 @@ import { clsx } from 'clsx'
 
 import { Typography } from '../typography'
 
+import { Eye, VisibilityOff } from './../../../assets/icons'
 import s from './text-field.module.scss'
-
-import { Eye, VisibilityOff } from '@/assets/icons'
-// import { Eye, VisibilityOff } from './../../../assets/icons'
 
 export type TextFieldProps = {
   onValueChange?: (value: string) => void
@@ -30,8 +28,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onChange,
       onValueChange,
       ...restProps
-    }
-    // ref
+    },
+    ref
   ) => {
     const [showPassword, setShowPassword] = useState(false)
 
@@ -63,7 +61,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <input
             className={classNames.field}
             placeholder={placeholder}
-            // ref={ref}
+            ref={ref}
             type={finalType}
             onChange={handleChange}
             {...restProps}

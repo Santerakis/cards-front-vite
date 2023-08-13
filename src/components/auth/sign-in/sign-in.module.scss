@@ -2,10 +2,24 @@
   max-width: 420px;
   padding: 33px 36px 29px;
 
-  > h1 {
-    margin-bottom: 27px;
-    text-align: center;
-  }
+  //> h1 {
+  //  margin-bottom: 27px;
+  //  text-align: center;
+  //}
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 12px;
 }
 
 .checkbox {
@@ -13,18 +27,30 @@
 }
 
 .forgotPassword {
-  display: flex;
-  justify-content: flex-end;
   margin-bottom: 66px;
+  text-align: right;
 }
 
-.textField:not(:first-of-type) {
-  margin-top: 24px;
+.recoverPasswordLink,
+.recoverPasswordLink:visited {
+  align-self: flex-end;
+  color: inherit;
+  text-decoration: none;
+}
+
+.button {
+  margin-top: 66px;
+  margin-bottom: 20px;
 }
 
 .noAccount {
-  margin-top: 20px;
-  color: var(--color-light-900, #c3c1c7);
+  margin-bottom: 11px;
+  color: var(--color-light-900);
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 27px;
   text-align: center;
 }
 
@@ -32,10 +58,7 @@
   display: flex;
   justify-content: center;
 
-  margin-top: 11px;
-
+  font-size: var(--font-size-m);
   font-weight: var(--font-weight-bold, 700);
-  color: var(--color-primary-500, #8c61ff);
-
-  //text-decoration-line: underline;
+  color: var(--color-accent-500, #8c61ff);
 }

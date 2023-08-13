@@ -121,3 +121,12 @@ export const Error: Story = {
     variant: 'error',
   },
 }
+
+export const AsLink: Story = {
+  args: {
+    variant: 'body2',
+    children: 'Have navigate',
+    as: 'a',
+    href: '/sign-up',
+  },
+}

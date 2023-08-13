@@ -75,5 +75,6 @@ export const AsLink: Story = {
     variant: 'primary',
     children: 'Link that looks like a button',
     as: 'a',
+    href: '/sign-up',
   },
 }

@@ -1,20 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { SignIn } from '@/components/auth'
-
-// import { SignIn } from './'
+import { CheckEmail } from './'
 
 const meta = {
-  title: 'Auth/Sign in',
-  component: SignIn,
+  title: 'Auth/Check email',
+  component: CheckEmail,
   tags: ['autodocs'],
-} satisfies Meta<typeof SignIn>
+} satisfies Meta<typeof CheckEmail>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    onSubmit: data => console.info(data),
+    email: 'your_email@domain.com',
   },
 }

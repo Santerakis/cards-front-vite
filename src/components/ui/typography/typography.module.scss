@@ -52,8 +52,11 @@
   @include typography(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
 
   cursor: pointer;
-  color: var(--color-text-link);
+
   text-decoration: underline;
+}
+.link1:visited {
+  color: var(--color-text-link);
 }
 
 .link2,
