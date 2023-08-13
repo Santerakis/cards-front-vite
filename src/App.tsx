@@ -1,11 +1,11 @@
-import { NewPassword } from '@/components/auth/new-password/new-password.tsx'
+import { RecoverPassword } from '@/components/auth/recover-password/recover-password.tsx'
 
 export function App() {
   const onSubmit = (data: any) => console.log(data)
 
   return (
     <div>
-      <NewPassword onSubmit={onSubmit} />
+      <RecoverPassword onSubmit={onSubmit} />
       {/*<CheckEmail />*/}
     </div>
   )
