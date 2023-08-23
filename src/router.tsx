@@ -20,7 +20,13 @@ const privateRoutes: RouteObject[] = [
   },
 ]
 
-const router = createBrowserRouter([...privateRoutes, ...publicRoutes])
+const router = createBrowserRouter([
+  {
+    element: <PrivateRoutes />,
+    children: privateRoutes,
+  },
+  ...publicRoutes,
+])
 
 export const Router = () => {
   return <RouterProvider router={router} />
