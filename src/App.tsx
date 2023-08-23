@@ -1,12 +1,5 @@
-import { RecoverPassword } from '@/components/auth/recover-password/recover-password.tsx'
+import { Router } from '@/router'
 
 export function App() {
-  const onSubmit = (data: any) => console.log(data)
-
-  return (
-    <div>
-      <RecoverPassword onSubmit={onSubmit} />
-      {/*<CheckEmail />*/}
-    </div>
-  )
+  return <Router />
 }
