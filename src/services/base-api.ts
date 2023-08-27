@@ -11,5 +11,3 @@ export const baseApi = createApi({
   }),
   endpoints: () => ({}),
 })
-
-export const { useGetDecksQuery } = baseApi
