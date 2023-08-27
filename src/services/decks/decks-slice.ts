@@ -19,3 +19,6 @@ const slice = createSlice({
     },
   },
 })
+
+export const decksActions = slice.actions
+export const decksReducer = slice.reducer
