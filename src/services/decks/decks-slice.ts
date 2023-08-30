@@ -6,6 +6,8 @@ const slice = createSlice({
     itemsPerPage: 10,
     currentPage: 1,
     searchByName: '',
+    orderBy: 'created-desc',
+    deckName: '',
   },
   reducers: {
     setItemsPerPage: (state, action: PayloadAction<number>) => {
@@ -16,6 +18,9 @@ const slice = createSlice({
     },
     setSearchByName: (state, action: PayloadAction<string>) => {
       state.searchByName = action.payload
+    },
+    createDeck: (state, action: PayloadAction<string>) => {
+      state.deckName = action.payload
     },
   },
 })

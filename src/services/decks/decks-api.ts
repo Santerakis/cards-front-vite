@@ -11,12 +11,23 @@ export const decksApi = baseApi.injectEndpoints({
             params: args,
           }
         },
+        providesTags: ['Decks'],
+      }),
+      createDeck: builder.mutation<any, any>({
+        query: ({ name }) => {
+          return {
+            url: `v1/decks`,
+            method: 'POST',
+            body: { name },
+          }
+        },
+        invalidatesTags: ['Decks'],
       }),
     }
   },
 })
 
-export const { useGetDecksQuery } = decksApi
+export const { useGetDecksQuery, useCreateDeckMutation } = decksApi
 
 type GetDecksArgs = {
   minCardsCount?: number

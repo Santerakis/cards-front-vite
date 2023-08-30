@@ -24,23 +24,17 @@ const privateRoutes: RouteObject[] = [
 
 const router = createBrowserRouter([
   {
-    element: <PrivateRoutes />,
+    element: <PrivateRoute />,
     children: privateRoutes,
   },
   ...publicRoutes,
 ])
 
 export const Router = () => {
-  // const result = useGetDecksQuery()
-
-  // if (result.isLoading) return <div>Loading...</div>
-  // console.log(result.data)
-  // console.log(result)
-
   return <RouterProvider router={router} />
 }
 
-function PrivateRoutes() {
+function PrivateRoute() {
   const isAuthenticated = true
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
