@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { Button, TextField } from '@/components/ui'
 import {
@@ -36,6 +36,11 @@ export const Decks = () => {
       })
     }
   }
+  const sortedString = useMemo(() => {
+    if (!sort) return undefined
+
+    return `${sort.key}-${sort.direction}`
+  }, [sort])
 
   const itemsPerPage = useAppSelector(state => state.decks.itemsPerPage)
   const currentPage = useAppSelector(state => state.decks.currentPage)
@@ -52,13 +57,15 @@ export const Decks = () => {
   const { data, isLoading } = useGetDecksQuery({
     currentPage,
     name: searchByName,
-    orderBy,
+    // orderBy,
+    orderBy: sortedString,
     itemsPerPage,
     // authorId: 'fe158fab-0656-43b4-953b-7a851330b10d',
   })
   const [createDeck, { isLoading: isCreateDeckLoading }] = useCreateDeckMutation()
 
   console.log(sort)
+  console.log(sortedString)
 
   return (
     <div>
@@ -88,7 +95,9 @@ export const Decks = () => {
             <TableHeadCell>Cards</TableHeadCell>
             <TableHeadCell onClick={() => handleSort('updated')}>
               Last Updated
-              {sort && sort.key === 'name' && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+              {sort && sort.key === 'updated' && (
+                <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
+              )}
             </TableHeadCell>
             <TableHeadCell>Created By</TableHeadCell>
           </TableRow>
