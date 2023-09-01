@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Button, TextField } from '@/components/ui'
 import {
   Table,
@@ -14,6 +16,27 @@ import { useAppDispatch, useAppSelector } from '@/services/store.ts'
 export const Decks = () => {
   const dispatch = useAppDispatch()
 
+  type Sort = {
+    key: string
+    direction: 'asc' | 'desc'
+  } | null
+
+  const [sort, setSort] = useState<Sort>(null)
+
+  const handleSort = (key: string) => {
+    if (sort && sort.key === key) {
+      setSort({
+        key,
+        direction: sort.direction === 'asc' ? 'desc' : 'asc',
+      })
+    } else {
+      setSort({
+        key,
+        direction: 'asc',
+      })
+    }
+  }
+
   const itemsPerPage = useAppSelector(state => state.decks.itemsPerPage)
   const currentPage = useAppSelector(state => state.decks.currentPage)
   const searchByName = useAppSelector(state => state.decks.searchByName)
@@ -27,18 +50,21 @@ export const Decks = () => {
   const handleCreateDeck = () => createDeck({ name: deckName })
 
   const { data, isLoading } = useGetDecksQuery({
-    itemsPerPage,
     currentPage,
     name: searchByName,
     orderBy,
+    itemsPerPage,
+    // authorId: 'fe158fab-0656-43b4-953b-7a851330b10d',
   })
   const [createDeck, { isLoading: isCreateDeckLoading }] = useCreateDeckMutation()
+
+  console.log(sort)
 
   return (
     <div>
       isLoading: {isLoading.toString()}
       <div>
-        <Button onClick={() => setItemsPerPage(10)}>itemsPerPge: 10</Button>
+        <Button onClick={() => setItemsPerPage(5)}>itemsPerPge: 10</Button>
         <Button onClick={() => setItemsPerPage(20)}>itemsPerPge: 20</Button>
         <Button onClick={() => setItemsPerPage(30)}>itemsPerPge: 30</Button>
       </div>
@@ -60,7 +86,10 @@ export const Decks = () => {
           <TableRow>
             <TableHeadCell>Name</TableHeadCell>
             <TableHeadCell>Cards</TableHeadCell>
-            <TableHeadCell>Last Updated</TableHeadCell>
+            <TableHeadCell onClick={() => handleSort('updated')}>
+              Last Updated
+              {sort && sort.key === 'name' && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+            </TableHeadCell>
             <TableHeadCell>Created By</TableHeadCell>
           </TableRow>
         </TableHead>
