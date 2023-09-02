@@ -6,7 +6,7 @@ const slice = createSlice({
     itemsPerPage: 10,
     currentPage: 1,
     searchByName: '',
-    orderBy: 'created-desc',
+    orderBy: '',
     deckName: '',
   },
   reducers: {

@@ -21,7 +21,10 @@ export const Decks = () => {
     direction: 'asc' | 'desc'
   } | null
 
-  const [sort, setSort] = useState<Sort>(null)
+  const [sort, setSort] = useState<Sort>({
+    key: 'updated',
+    direction: 'desc',
+  })
 
   const handleSort = (key: string) => {
     if (sort && sort.key === key) {
