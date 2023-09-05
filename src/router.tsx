@@ -8,6 +8,7 @@ import {
 
 import { DecksPage } from '@/pages/decks/decks-page.tsx'
 import { SignInPage } from '@/pages/sign-in/sign-in-page.tsx'
+import { useMeQuery } from '@/services/auth/auth-api.ts'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
 ])
 
 export const Router = () => {
+  const { data } = useMeQuery()
+
+  console.log('me data: ', data)
+
   return <RouterProvider router={router} />
 }
 
