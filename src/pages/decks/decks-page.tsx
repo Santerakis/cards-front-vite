@@ -13,7 +13,7 @@ import { useCreateDeckMutation, useGetDecksQuery } from '@/services/decks'
 import { decksActions } from '@/services/decks/decks-slice.ts'
 import { useAppDispatch, useAppSelector } from '@/services/store.ts'
 
-export const Decks = () => {
+export const DecksPage = () => {
   const dispatch = useAppDispatch()
 
   type Sort = {
@@ -48,7 +48,7 @@ export const Decks = () => {
   const itemsPerPage = useAppSelector(state => state.decks.itemsPerPage)
   const currentPage = useAppSelector(state => state.decks.currentPage)
   const searchByName = useAppSelector(state => state.decks.searchByName)
-  const orderBy = useAppSelector(state => state.decks.orderBy)
+  // const orderBy = useAppSelector(state => state.decks.orderBy)
   const deckName = useAppSelector(state => state.decks.deckName)
 
   const setItemsPerPage = (args: number) => dispatch(decksActions.setItemsPerPage(args))
