@@ -32,13 +32,13 @@ export const customFetchBase: BaseQueryFn<
           extraOptions
         )
 
-        console.log(refreshResult)
+        // console.log(refreshResult)
         if (refreshResult?.meta?.response?.status === 204) {
           // Retry the initial query
           result = await baseQuery(args, api, extraOptions)
         } else {
-          // api.dispatch(logout())
-          // window.location.href = '/login'
+          // globalNavigate('/login')
+          // window.location.hr ef = '/login'
         }
       } finally {
         release()

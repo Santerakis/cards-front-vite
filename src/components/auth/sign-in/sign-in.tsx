@@ -12,7 +12,7 @@ type Props = {
 export const SignIn = (props: Props) => {
   const { handleSubmit, control, formState } = useSignIn(props.onSubmit)
 
-  console.error(formState.errors)
+  console.error('form error: ', formState.errors)
 
   return (
     <Card className={s.card}>

@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
+import { Loader } from '@/components/ui/loader/Loader.tsx'
 import { DecksPage } from '@/pages/decks/decks-page.tsx'
 import { SignInPage } from '@/pages/sign-in/sign-in-page.tsx'
 import { useMeQuery } from '@/services/auth/auth-api.ts'
@@ -33,15 +34,14 @@ const router = createBrowserRouter([
 ])
 
 export const Router = () => {
-  const { data } = useMeQuery()
-
-  console.log('me data: ', data)
-
   return <RouterProvider router={router} />
 }
 
 function PrivateRoute() {
-  const isAuthenticated = true
+  const { data, isLoading, error } = useMeQuery()
+
+  if (isLoading) return <Loader />
+  const isAuthenticated = !!data
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
 }
