@@ -18,7 +18,8 @@ export const SignInPage = () => {
   const handleSignIn = (data: any) => {
     signIn(data)
       .unwrap()
-      .then(() => navigate('/'))
+      // .then(() => navigate('/'))
+      .then(() => refetch())
   }
 
   return <SignIn onSubmit={handleSignIn} />
