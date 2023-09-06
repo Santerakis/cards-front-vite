@@ -9,7 +9,7 @@ import {
 import { Loader } from '@/components/ui/loader/Loader.tsx'
 import { DecksPage } from '@/pages/decks/decks-page.tsx'
 import { SignInPage } from '@/pages/sign-in/sign-in-page.tsx'
-import { useMeQuery } from '@/services/auth/auth-api.ts'
+import { useLoginMutation, useMeQuery } from '@/services/auth/auth-api.ts'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -38,8 +38,10 @@ export const Router = () => {
 }
 
 function PrivateRoute() {
-  const { data, isLoading, error } = useMeQuery()
+  const { data, isLoading } = useMeQuery()
+  const [signIn, { data: mutData }] = useLoginMutation()
 
+  console.log('PrivateRoute: ', mutData)
   if (isLoading) return <Loader />
   const isAuthenticated = !!data
 

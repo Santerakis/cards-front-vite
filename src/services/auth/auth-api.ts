@@ -9,6 +9,9 @@ export const authApi = baseApi.injectEndpoints({
             url: `v1/auth/me`,
           }
         },
+        extraOptions: {
+          maxRetries: 0,
+        },
       }),
       login: builder.mutation<any, any>({
         query: args => {
